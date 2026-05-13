@@ -28,15 +28,6 @@ curl -O https://raw.githubusercontent.com/adventurejason-code/active-window/main
 makepkg -si
 ```
 
-### Manual build
-
-```bash
-git clone https://github.com/adventurejason-code/active-window.git
-cd active-window
-cargo build --release
-./target/release/active-window
-```
-
 ## Installation (Nix)
 
 ```bash
@@ -47,6 +38,15 @@ Or to try it without installing:
 
 ```bash
 nix run github:adventurejason-code/active-window
+```
+
+## Manual build
+
+```bash
+git clone https://github.com/adventurejason-code/active-window.git
+cd active-window
+cargo build --release
+./target/release/active-window
 ```
 
 ## How it works
