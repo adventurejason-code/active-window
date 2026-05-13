@@ -28,9 +28,6 @@ curl -O https://raw.githubusercontent.com/adventurejason-code/active-window/main
 makepkg -si
 ```
 
-`makepkg` will fetch the source from GitHub, build a stripped release binary,
-and install it to `/usr/bin/active-window`.
-
 ### Manual build
 
 ```bash
