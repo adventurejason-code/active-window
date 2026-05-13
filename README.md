@@ -17,14 +17,9 @@ Exit code `0` on success, `1` if no active window found or on error.
 
 ## Compositor support
 
-| Compositor | Supported |
-|---|---|
-| sway | ✅ |
-| Hyprland | ✅ |
-| river | ✅ |
-| KDE Plasma (kwin ≥ 5.27) | ✅ |
-| labwc | ✅ |
-| GNOME / Mutter | ❌ (protocol not exposed by default) |
+Any compositor that exposes the
+[`zwlr_foreign_toplevel_manager_v1`](https://wayland.app/protocols/wlr-foreign-toplevel-management-unstable-v1)
+protocol will work.
 
 ## Installation (Arch Linux)
 
