@@ -1,4 +1,4 @@
-# Maintainer: Jason Milkins <adventurejason@gmail.com>
+# Maintainer: Jason
 pkgname=active-window
 pkgver=0.1.0
 pkgrel=1
