@@ -12,14 +12,14 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/adventurejason-code/active-
 sha256sums=('SKIP')
 
 build() {
-    cd "$pkgname"
+    cd "$pkgname-$pkgver"
     # Use CARGO_HOME inside srcdir to avoid polluting ~/.cargo during build
     export CARGO_HOME="$srcdir/.cargo"
     cargo build --release
 }
 
 package() {
-    cd "$pkgname"
+    cd "$pkgname-$pkgver"
     install -Dm755 "target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
     # Install a basic man page if you create one, e.g.:
     # install -Dm644 "man/$pkgname.1" "$pkgdir/usr/share/man/man1/$pkgname.1"
