@@ -34,10 +34,16 @@ makepkg -si
 nix profile install github:adventurejason-code/active-window
 ```
 
-Or to try it without installing:
+For NixOS flake users, add to your `flake.nix` inputs:
 
-```bash
-nix run github:adventurejason-code/active-window
+```nix
+active-window.url = "github:adventurejason-code/active-window";
+```
+
+Then reference the package as:
+
+```nix
+inputs.active-window.packages.${system}.default
 ```
 
 ## Manual build
