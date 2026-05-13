@@ -8,7 +8,7 @@
       mkPackage = system:
         nixpkgs.legacyPackages.${system}.rustPlatform.buildRustPackage {
           pname = "active-window";
-          version = "0.1.0";
+          version = "0.1.1";
           src = self;
           cargoHash = "sha256-MFzi5wCNxX/Zlf8trXv+xZTV/ms3kQ9TSBJsx6oeiZM=";
           meta = with nixpkgs.legacyPackages.${system}.lib; {

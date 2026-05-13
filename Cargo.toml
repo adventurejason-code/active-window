@@ -1,6 +1,6 @@
 [package]
 name = "active-window"
-version = "0.1.0"
+version = "0.1.1"
 edition = "2021"
 description = "Prints the currently active Wayland window title to stdout"
 license = "MIT"

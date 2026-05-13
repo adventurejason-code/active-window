@@ -1,6 +1,6 @@
 # Maintainer: Jason
 pkgname=active-window
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="CLI tool that prints the currently active Wayland window title to stdout"
 arch=('x86_64')
