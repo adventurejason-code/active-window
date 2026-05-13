@@ -1,11 +1,7 @@
 use std::collections::HashMap;
 use std::process;
 
-use wayland_client::{
-    Proxy,
-    protocol::wl_registry,
-    Connection, Dispatch, QueueHandle,
-};
+use wayland_client::{protocol::wl_registry, Connection, Dispatch, Proxy, QueueHandle};
 use wayland_protocols_wlr::foreign_toplevel::v1::client::{
     zwlr_foreign_toplevel_handle_v1::{self, ZwlrForeignToplevelHandleV1},
     zwlr_foreign_toplevel_manager_v1::{self, ZwlrForeignToplevelManagerV1},
@@ -46,10 +42,14 @@ impl Dispatch<wl_registry::WlRegistry, ()> for AppState {
         _: &Connection,
         qh: &QueueHandle<Self>,
     ) {
-        if let wl_registry::Event::Global { name, interface, version } = event {
+        if let wl_registry::Event::Global {
+            name,
+            interface,
+            version,
+        } = event
+        {
             if interface == "zwlr_foreign_toplevel_manager_v1" {
-                let mgr: ZwlrForeignToplevelManagerV1 =
-                    registry.bind(name, version.min(3), qh, ());
+                let mgr: ZwlrForeignToplevelManagerV1 = registry.bind(name, version.min(3), qh, ());
                 state.manager = Some(mgr);
                 state.protocol_supported = true;
             }
@@ -184,7 +184,10 @@ fn main() {
             if state.toplevels.is_empty() {
                 eprintln!("no windows reported by compositor");
             } else {
-                eprintln!("no active window found ({} windows visible)", state.toplevels.len());
+                eprintln!(
+                    "no active window found ({} windows visible)",
+                    state.toplevels.len()
+                );
             }
             process::exit(1);
         }
