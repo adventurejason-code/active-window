@@ -10,7 +10,7 @@
           pname = "active-window";
           version = "0.1.1";
           src = self;
-          cargoHash = "sha256-MFzi5wCNxX/Zlf8trXv+xZTV/ms3kQ9TSBJsx6oeiZM=";
+          cargoHash = "sha256-fqPByh7xVTCzIiPc6pEvuCkOHhU9+k69cWBc2URVOw4=";
           meta = with nixpkgs.legacyPackages.${system}.lib; {
             description = "Prints the currently active Wayland window title to stdout";
             homepage = "https://github.com/adventurejason-code/active-window";
