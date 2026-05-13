@@ -47,7 +47,3 @@ The tool connects to the Wayland socket, binds
 collect the full set of open window handles and their property events, then
 finds the handle whose `state` array includes the `activated` (value `2`) enum
 entry and prints its title.
-
-## Dependencies
-
-Build: `cargo`
