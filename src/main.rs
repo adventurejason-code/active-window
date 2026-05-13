@@ -75,6 +75,13 @@ impl Dispatch<ZwlrForeignToplevelManagerV1, ()> for AppState {
             _ => {}
         }
     }
+
+    fn event_created_child(
+        _opcode: u16,
+        qhandle: &QueueHandle<Self>,
+    ) -> std::sync::Arc<dyn wayland_client::backend::ObjectData> {
+        qhandle.make_data::<ZwlrForeignToplevelHandleV1, ()>(())
+    }
 }
 
 impl Dispatch<ZwlrForeignToplevelHandleV1, ()> for AppState {
