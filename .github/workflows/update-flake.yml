@@ -1,0 +1,58 @@
+name: Update Nix flake
+
+on:
+  workflow_dispatch:
+
+jobs:
+  update-flake:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: dtolnay/rust-toolchain@stable
+
+      - name: Generate Cargo.lock
+        run: cargo generate-lockfile
+
+      - uses: cachix/install-nix-action@v27
+        with:
+          extra_nix_config: |
+            experimental-features = nix-command flakes
+
+      - name: Stage Cargo.lock so nix includes it in flake source
+        run: git add Cargo.lock
+
+      - name: Resolve cargoHash
+        run: |
+          set +e
+          OUTPUT=$(nix build . 2>&1)
+          EXIT=$?
+          set -e
+          if [ $EXIT -ne 0 ]; then
+            HASH=$(echo "$OUTPUT" | grep "got:" | awk '{print $NF}')
+            if [ -z "$HASH" ]; then
+              echo "Build failed for an unexpected reason:"
+              echo "$OUTPUT"
+              exit 1
+            fi
+            echo "Updating cargoHash to: $HASH"
+            sed -i "s|cargoHash = \"[^\"]*\";|cargoHash = \"$HASH\";|" flake.nix
+          fi
+
+      - name: Verify build
+        run: nix build .
+
+      - name: Commit and push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add Cargo.lock flake.nix flake.lock
+          if git diff --staged --quiet; then
+            echo "Nothing to commit, flake is already up to date"
+          else
+            git commit -m "Update Cargo.lock, flake.lock, and cargoHash [skip ci]"
+            git push
+          fi
