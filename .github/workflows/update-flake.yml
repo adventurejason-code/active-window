@@ -2,6 +2,10 @@ name: Update Nix flake
 
 on:
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - Cargo.toml
 
 jobs:
   update-flake:
