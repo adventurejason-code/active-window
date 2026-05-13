@@ -37,6 +37,18 @@ cargo build --release
 ./target/release/active-window
 ```
 
+## Installation (Nix)
+
+```bash
+nix profile install github:adventurejason-code/active-window
+```
+
+Or to try it without installing:
+
+```bash
+nix run github:adventurejason-code/active-window
+```
+
 ## How it works
 
 The tool connects to the Wayland socket, binds
