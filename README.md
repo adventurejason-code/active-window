@@ -50,5 +50,4 @@ entry and prints its title.
 
 ## Dependencies
 
-Runtime: `libc`, `libgcc_s` (both standard on any Linux system)  
-Build: `cargo` + the crates in `Cargo.lock`
+Build: `cargo`
