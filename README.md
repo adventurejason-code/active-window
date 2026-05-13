@@ -23,19 +23,19 @@ protocol will work.
 
 ## Installation (Arch Linux)
 
-Download the `PKGBUILD` from this repo, then:
-
 ```bash
+curl -O https://raw.githubusercontent.com/adventurejason-code/active-window/main/PKGBUILD
 makepkg -si
 ```
 
-`makepkg` will fetch the source from GitHub, download Rust crate dependencies
-via Cargo, build a stripped release binary, and install it to
-`/usr/bin/active-window`.
+`makepkg` will fetch the source from GitHub, build a stripped release binary,
+and install it to `/usr/bin/active-window`.
 
 ### Manual build
 
 ```bash
+git clone https://github.com/adventurejason-code/active-window.git
+cd active-window
 cargo build --release
 ./target/release/active-window
 ```
